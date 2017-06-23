@@ -20,3 +20,10 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+.nav-wrapper{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+body{
+  background-color: #e0e0e0 grey lighten-2;
+}

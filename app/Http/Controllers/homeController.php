@@ -11,7 +11,6 @@ class homeController extends Controller
     //
 	public function index()
 	{
-		$jobs = job::take(6)->get();
-		return view('welcome',compact('jobs'));
+			return view('welcome',compact('jobs'));
 	}
 }
