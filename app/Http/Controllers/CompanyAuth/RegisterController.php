@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CompanyAuth;
 
 use App\Company;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/company/home';
+    public $redirectTo = '/company/home';
+   
 
     /**
      * Create a new controller instance.
@@ -51,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:companies',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:2|confirmed',
         ]);
     }
 
@@ -61,12 +63,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return Company
      */
-    protected function create(array $data)
+    protected function register(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:companies',
+            'password' => 'required|min:2|confirmed',
+            'descrip' => 'required|max:100'
+            ]);
         return Company::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'descrip' => $request['descrip'],
         ]);
     }
 

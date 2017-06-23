@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/css/materialize.css">
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
 
     <!-- Scripts -->
     <script>
@@ -45,8 +46,8 @@
         <!-- display the right-side of navBar -->
                 <ul class="right hide-on-med-and-down">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/company/login') }}">Login</a></li>
-                    <li><a href="{{ url('/company/register') }}">Register</a></li>
+                    <li><a href="{{ url('/company/login') }}" class="company_login" data-target="company_login_modal">Login</a></li>
+                    <li><a href="{{ url('/company/register') }}" class="company_register" data-target="company_register_modal">Register</a></li>
                 @else
                     <li>
                         <a class="dropdown-button" href="#!" data-beloworigin="true" data-induration="200"
@@ -59,9 +60,10 @@
 
           </div>
         </nav>
-     </div>
+     </div> <!-- end of navBar fixed -->
 
-                
+     @include('company.login_modal')
+     @include('company.register_modal')
          
     @yield('content')
 

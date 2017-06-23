@@ -12,7 +12,7 @@
 */
 
 Route::get('/',function() {
-    return view('company.auth.login');
+    return view('company.home');
 });
 
 Route::group(['prefix' => 'applicant'], function () {
