@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class quiz extends Model
+class exam extends Model
 {
     //
-    public function job()
+	public function job()
     {
     	return $this->belongsTo(job::class);
     }

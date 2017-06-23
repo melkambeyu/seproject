@@ -13,11 +13,29 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-    	factory(App\company::class, 3)->create()->each(function ($u){
-    		$u->jobs()->saveMany(factory(App\job::class, 5)->create());
-    	});
-    factory(App\applicant::class, 7)->create();
-    	// factory(App\job::class, 15)->create();
-    	// factory(App\company::class,3)->create();
+    	factory(App\company::class, 3)->create()->each(function ($c){
+            
+            $c->jobs()->saveMany(factory(App\job::class, 3)->create()
+
+                ->each(function($j){
+            
+                    factory(App\applicant::class, 3)->create()
+                        ->each(function($a) use($j){
+
+                            $apply = factory(App\application::class, 3)->create();
+                            $a->applications()->saveMany($apply);
+                            $j->applications()->saveMany($apply);
+                        });
+                        $exam = factory(App\exam::class, 1)->create();
+                        $j->exam()->save($exam);
+            
+            // problem stats here
+
+                                $exam->questions()->saveMany(factory(App\question::class, 10)->make());
+            // and ends here
+            }));
+        });
+
+    	factory(App\admin::class,3)->create();
     }
 }

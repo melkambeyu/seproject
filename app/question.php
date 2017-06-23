@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class question extends Model
 {
     //
+	protected $casts = [
+		'choices' => 'array'
+	];
 
-    public function quiz()
+    public function exam()
     {
-    	$return $this->belongsTo(quiz::class);
+    		return $this->belongsTo(exam::class);
     }
 }

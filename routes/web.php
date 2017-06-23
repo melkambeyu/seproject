@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/','homeController@index');
+Route::get('/',function() {
+    return view('admin.auth.login');
+});
 
 Route::group(['prefix' => 'applicant'], function () {
   Route::get('/login', 'ApplicantAuth\LoginController@showLoginForm');

@@ -38,4 +38,8 @@ class Applicant extends Authenticatable
     {
         $this->notify(new ApplicantResetPassword($token));
     }
+    public function applications()
+    {
+        return $this->hasMany(application::class);
+    }
 }

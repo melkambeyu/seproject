@@ -12,9 +12,13 @@ class job extends Model
     	return $this->belongsTo(company::class);
     }
 
-    public function quiz()
+    public function applications()
     {
-    	return $this->hasOne(quiz::class);
+    	return $this->hasMany(application::class);
+    }
+    public function exam()
+    {
+    	return $this->hasOne(exam::class);
     }
 }
 
