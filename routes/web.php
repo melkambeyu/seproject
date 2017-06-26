@@ -12,7 +12,7 @@
 */
 
 Route::get('/',function() {
-    return view('company.home');
+    return view('welcome');
 });
 
 Route::group(['prefix' => 'applicant'], function () {
@@ -56,3 +56,5 @@ Route::group(['prefix' => 'company'], function () {
   Route::get('/password/reset', 'CompanyAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'CompanyAuth\ResetPasswordController@showResetForm');
 });
+Route::resource('questions', 'questionsController');
+Route::resource('jobs','jobsController');

@@ -35,8 +35,9 @@ $factory->define(App\job::class, function(Faker\Generator $faker) {
 $factory->define(App\exam::class, function(Faker\Generator $faker) {
 	return [
 		'job_id' => rand(1,3),
-		'title' => $faker->words(2,true)
+		'title' => 'Qualification Exam'
 		];
+		// $faker->words(2,true)
 });
 
 $factory->define(App\question::class, function(Faker\Generator $faker){

@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    public $redirectTo = '/company/home';
+    protected $redirectTo = '/company/home';
    
 
     /**
@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'password' => 'required|min:2|confirmed',
             'descrip' => 'required|max:100'
             ]);
-        return Company::create([
+         Company::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
