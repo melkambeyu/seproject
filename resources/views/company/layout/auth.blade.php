@@ -45,6 +45,15 @@
                 <a class="company_login" data-target="company_login_modal">Company</a>
             </li>
         </ul>
+
+         <ul id="dropdown3" class="dropdown-content">
+            <li>
+                <a class="applicant_register" data-target="applicant_register_modal">As Applicant</a>
+            </li>
+            <li>
+                <a class="company_register" data-target="company_register_modal">As Company</a>
+            </li>
+        </ul>
         
         <nav class="#004d40 teal darken-4">
           <div class="nav-wrapper ">
@@ -59,12 +68,16 @@
                         <a class="dropdown-button" href="#!" data-beloworigin="true" data-activates="dropdown2"
                         data-induration="200" data-outduration="150">Login</a>
                     </li>
-                    <!-- <li><a class="company_login" data-target="company_login_modal">Login</a></li> -->
-                    <li><a class="company_register" data-target="company_register_modal">Register</a></li>
+                    <li><a class="dropdown-button" href="#1" data-constrainwidth="false" data-induration="200"
+                        data-outduration="150" data-beloworigin="true" data-activates="dropdown3">Sign Up</a>
+                    </li>
                 @else
                     <li>
-                        <a class="dropdown-button" href="#!" data-beloworigin="true" data-induration="200"
+                    <div class="chip">
+                      <a class="dropdown-button black-text" href="#!" data-beloworigin="true" data-induration="200"
                         data-outduration="150" data-activates="dropdown1">{{ Auth::user()->name }}</a>
+                     </div>
+                        
                     </li>
     
                         
@@ -78,6 +91,8 @@
      @include('company.login_modal')
      @include('company.register_modal')
      @include('applicant.login_modal')
+     @include('applicant.register_modal')
+
          
     @yield('content')
 

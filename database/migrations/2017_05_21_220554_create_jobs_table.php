@@ -17,7 +17,7 @@ class CreateJobsTable extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->string('name');
-            $table->text('descrip');
+            $table->text('description');
 
             $table->timestamps();
         });

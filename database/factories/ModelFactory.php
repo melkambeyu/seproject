@@ -19,7 +19,7 @@ $factory->define(App\company::class, function(Faker\Generator $faker){
 		'name'=> $faker->company.' '.$faker->companySuffix,
 		'email'=>$faker->email,
 		'password' => bcrypt('me'),
-		'descrip' => $faker->sentence,
+		'description' => $faker->sentence,
 	];
 });
 
@@ -28,7 +28,7 @@ $factory->define(App\job::class, function(Faker\Generator $faker) {
 	return [
 		'company_id' => rand(1,3),
 		'name' => $faker->jobTitle,
-		'descrip' => $faker->sentence
+		'description' => $faker->sentence
 	];
 });
 
@@ -55,8 +55,8 @@ $factory->define(App\applicant::class, function(Faker\Generator $faker){
 	return[
 		'email' => $faker->unique()->email,
 		'sex' => $gender,
-		'f_name' => $gender == 'female' ? $faker->firstNameFemale : $faker->firstNameMale,
-		'l_name' => $faker->lastName,
+		'firstName' => $gender == 'female' ? $faker->firstNameFemale : $faker->firstNameMale,
+		'lastName' => $faker->lastName,
 		'password' => bcrypt('me'),
 		
 	];

@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:companies',
             'password' => 'required|min:2|confirmed',
+            'description' => 'required|min:5',
         ]);
     }
 
@@ -63,19 +64,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return Company
      */
-    protected function register(Request $request)
+    protected function create(array $data)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:companies',
-            'password' => 'required|min:2|confirmed',
-            'descrip' => 'required|max:100'
-            ]);
-         Company::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            'descrip' => $request['descrip'],
+     return company::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'description' => $data['description'],
         ]);
     }
 

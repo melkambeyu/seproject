@@ -1,4 +1,4 @@
-@extends('company.layout.auth')
+@extends('layouts.main')
 
 @section('content')
 	<h1>Not Logged in..</h1>

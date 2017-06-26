@@ -62,6 +62,7 @@ class LoginController extends Controller
     {
         return Auth::guard('applicant');
     }
+    
     protected function sendFailedLoginResponse(Request $request)
     {
         if ($request->ajax()) {
