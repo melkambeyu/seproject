@@ -42,4 +42,8 @@ class Applicant extends Authenticatable
     {
         return $this->hasMany(application::class);
     }
+    public function jobs()
+    {
+        return $this->belongsToMany('App\job', 'applications');
+    }
 }

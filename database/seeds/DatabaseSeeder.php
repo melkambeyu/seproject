@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
                     factory(App\applicant::class, 3)->create()
                         ->each(function($a) use($j){
 
-                            $apply = factory(App\application::class, 3)->create();
-                            $a->applications()->saveMany($apply);
-                            $j->applications()->saveMany($apply);
+                            // $apply = factory(App\application::class, 3)->create();
+                            // $a->applications()->saveMany($apply);
+                            // $j->applications()->saveMany($apply);
+                            $j->applicants()->attach($a);
                         });
                         $exam = factory(App\exam::class, 1)->create();
                         $j->exam()->save($exam);

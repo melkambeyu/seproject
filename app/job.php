@@ -22,5 +22,10 @@ class job extends Model
     {
     	return $this->hasOne(exam::class);
     }
+    public function applicants()
+    {
+       return $this->belongsToMany('App\applicant','applications');
+    }
 }
+
 
