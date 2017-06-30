@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-    	factory(App\company::class, 3)->create()->each(function ($c){
+    	factory(App\company::class, 5)->create()->each(function ($c){
             
-            $c->jobs()->saveMany(factory(App\job::class, 3)->create()
+            $c->jobs()->saveMany(factory(App\job::class, 6)->create()
 
                 ->each(function($j){
             
-                    factory(App\applicant::class, 3)->create()
+                    factory(App\applicant::class, 6)->create()
                         ->each(function($a) use($j){
 
                             // $apply = factory(App\application::class, 3)->create();
