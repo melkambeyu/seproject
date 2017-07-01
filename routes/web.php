@@ -56,9 +56,7 @@ Route::group(['prefix' => 'company'], function () {
   Route::get('/password/reset', 'CompanyAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'CompanyAuth\ResetPasswordController@showResetForm');
 
-  // Route::get('/index', function(){
-  //   return view('company.layout.index');
-  // });
+  Route::post('/question/{id}', 'questionsController@store');
 });
 Route::resource('questions', 'questionsController');
 Route::resource('jobs','jobsController');
