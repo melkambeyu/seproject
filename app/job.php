@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class job extends Model
 {
     //
-    protected $fillable = ['name','description'];
+    protected $fillable = ['name','salary','vacant','description'];
     
     public function company()
     {
@@ -26,6 +26,16 @@ class job extends Model
     {
        return $this->belongsToMany('App\applicant','applications');
     }
+    public function hasApplied($id)
+    {
+        foreach($this->applicants as $person){
+            if($person->id === $id){
+                return true;
+             }
+        }
+                return false;
+    }
 }
+
 
 

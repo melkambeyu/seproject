@@ -2,10 +2,10 @@
     <div id="applicant_login_body" class="modal-content">
           <div class="row" style="margin: 20px 0px;">
             <form id="applicant_login_form" role="form" method="POST" action="{{ url('/applicant/login') }}">
-                    {{ csrf_field() }}
+                {{ csrf_field() }}
                 <div class="input-field{{ $errors->has('email') ? ' has-error' : '' }} col s10 offset-s1">
                     <label for="email_app">e-mail</label>
-                    <input id="email_app" type="email"  name="email" value="{{ old('email') }}" autofocus>
+                    <input id="email_app" type="email"  name="email" autofocus>
                     <!-- <div id="error_app"></div> -->
                     @if ($errors->has('email'))
                         <span class="help-block">

@@ -28,7 +28,9 @@ $factory->define(App\job::class, function(Faker\Generator $faker) {
 	return [
 		'company_id' => rand(1,3),
 		'name' => $faker->jobTitle,
-		'description' => $faker->sentence
+		'vacant' => rand(2,10),
+		'salary' => rand(1500,3000),
+		'description' => $faker->sentence,
 	];
 });
 

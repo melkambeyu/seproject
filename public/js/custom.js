@@ -60,7 +60,6 @@ $('#applicant_login_btn').click(function(e) {
 	var form = $('#applicant_login_form'),
 		url = form.attr('action'),
 		method = 'POST';
-		$('form').trigger('reset');
 	// reset error messages..
 	form.find('.red-text').remove();
 	form.find('input').removeClass('invalid');
