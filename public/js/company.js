@@ -83,4 +83,11 @@ $('#q_save').click(function(e) {
 		}
 
 	});
+});
+
+$('.tables .hider').click(function(e){
+	e.preventDefault();
+	$this = $(this);
+	// console.log($this.siblings('table'));
+	$this.siblings('table').toggle();
 })

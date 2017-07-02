@@ -1,4 +1,4 @@
-$('.section').click(function(e){
+$('.side_bar .section').click(function(e){
 	e.preventDefault();
 	$this = $(this);
 	$this.closest('.side_bar')

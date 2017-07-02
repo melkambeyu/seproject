@@ -1,16 +1,36 @@
-<div class="container"><ul class="collapsible" data-collapsible="expandable">
+<div style="margin: 5% 5%;">
+
 <?php $row = 0;?>
 @foreach($jobs as $job)
-	
-	<li>
-      <div class="collapsible-header" style="background-color: #546e7a;">
-      	<strong>{{ $job->name }}</strong><strong style="float: right;">V</strong>
- 	</div>
-	 
+	<div class="section tables">
+    @if(!count($applicants))
+      <h2 style="margin: 5% 5%; font-style: italic;">No Applicants yet!!</h2>
+    @else
+    <h5 style="margin-right: 7px;">Applicants for <b>{{ $job->name }}</b></h5>
+    <span>{{ $job->description }}</span><br>
+    <a class="waves-effect waves-light btn hider">Toggle Table</a>
+    <table class="bordered striped highlight centered hidden">
+        <thead>
+          <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Sex</th>
+              <th data-field="price">Email</th>
+          </tr>
+        </thead>
+	    
+        <tbody>
 	@foreach($applicants[$row] as $entry)
-	      <div class="collapsible-body" style="padding: 0px 30px;"><p>{{ $entry->firstName }}{{ $entry->lastName }}</p></div>
+          <tr>
+            <td>{{ $entry->firstName }} {{ $entry->lastName }}</td>
+            <td>{{ $entry->sex }}</td>
+            <td>{{ $entry->email }}</td>
+          </tr>
 	@endforeach    
-    </li>
+        </tbody>
+      </table>
+    @endif
+	</div>
+	
 	 <?php $row++; ?>
 @endforeach
 </ul>

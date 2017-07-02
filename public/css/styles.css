@@ -44,7 +44,7 @@ nav{
 	margin-left: 7%;
 
 }
-.section:hover {
+.side_bar .section:hover {
 	background: grey;
 	cursor: pointer;
 }
@@ -81,4 +81,15 @@ nav{
 	border-style: dashed;
 	border-width: medium;
     border-color: orange;
+    border-radius: 2px;
+}
+table{
+	border-style: solid;
+	border-width: thin;
+	border-radius: 5px;
+}
+.juju {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
 }

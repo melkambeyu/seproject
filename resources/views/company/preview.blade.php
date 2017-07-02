@@ -7,17 +7,17 @@
         @foreach($questions as $question)
         <div id="pad{{$q}}" class="pad">
             <div class="question">
-              <span>{{ $question->question }}</span>
+              <span><strong style="margin-right: 7px;">{{$q}}</strong>{{ $question->question }}</span>
+              <span class="new badge" data-badge-caption="Click"></span>
             </div>
             <div class="row choice">
-              <form >
 
             @foreach($question->choices as $choice)
-                  <input class="with-gap" disabled="disabled" id="choice{{$c}}" name="group1" type="radio"/>
-                  <label for="choice{{$c}}" class="col s6"><span><strong>{{ $choice }}</strong></span></label>
+                  <input class="with-gap" id="choice{{$c}}" name="group1" type="radio"/>
+                  <label class="col s6"><span><strong>{{ $choice }}</strong></span></label>
                   <?php $c++; ?>
             @endforeach
-              </form>
+
             </div>
           <div class="buttons hidden">
             <a class="waves-effect waves-light btn green que_edit" data-target="edit_modal" href="{{ route('questions.edit', $question->id)}}" data-action="{{route('questions.update', $question->id)}}">Edit
@@ -36,12 +36,6 @@
           
         </div>
     </div>   
-      <script>
-        (function() {
-          Materialize.toast('Click a Question to Edit!',5000,'rounded','orange darken-3');
-          })();
-      </script>
-       
     @endif
      <div class="fixed-action-btn ">
         <button id="new_que" class="btn btn-large green z-depth-4" data-target="newQue_modal">
@@ -105,9 +99,8 @@
 <script src="/js/ques.js"></script>
 
 <script>
-  $('#jobs, #exams, #applicants').addClass('disabled');
-  $('.side_bar .orange').removeClass('orange');
-  $('#exams').addClass('orange');
-
+  $('#jobs, #applicants').remove();
+              
+  $('#exams').addClass('orange').html('<span><strong>Questions</strong></span>')
 </script>
 @endsection

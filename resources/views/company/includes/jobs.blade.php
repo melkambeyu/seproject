@@ -1,4 +1,7 @@
-@foreach($jobs as $job)
+@if( !count($jobs))
+  <h2 style="font-style: italic; margin: 5% 5%;">No Vancant Jobs!!</h2>
+@else
+  @foreach($jobs as $job)
  <div class="col s6">
        <div class="card horizontal z-depth-2 hoverable">
          <div class="card-stacked">
@@ -7,13 +10,19 @@
              <span class="truncate" style="width: 400px;">{{ $job->description }}</span>
            </div>
            <div class="card-action">
-             <button style="padding: 0px 15px;" class="waves-effect waves-green btn-flat" href="/company/job/{{ $job->id }}">Show Applicants</button>
-             <button class="waves-effect waves-green btn-flat new_exam" href="{{$job->id}}" data-target="exam_modal" style="float: right;">Create Exam</button>
+             <button style="padding: 0px 15px;" class="waves-effect waves-green btn-flat orange-text" href="/company/job/{{ $job->id }}">Show Applicants</button>
+            @if(!count($job->exam)) 
+             <a class="waves-effect waves-green btn-flat red-text animated infinite flash juju new_exam" href="{{$job->id}}" data-target="exam_modal" style="float: right;"><strong>Create Exam</strong></a>
+
+             @else
+              <a class="waves-effect waves-green btn-flat" href="{{ route('exams.show', $job->exam->id) }}" target="_blank" style="float: right;">Show Exam</a>
+            @endif
            </div>
          </div>
        </div>
  </div>
  @endforeach
+@endif
   <div class="fixed-action-btn">
     <a id="new_job" class="btn btn-large green z-depth-4" data-target="job_modal" >
       <span>Add Job</span>

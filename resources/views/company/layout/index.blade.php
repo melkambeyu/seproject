@@ -12,16 +12,19 @@
              @include('company.includes.seekers')
            </div>
 
-           <div class="row new_question hidden" style="margin: 5% 2%;">
+           <div class="row new_question hidden" style="margin: 5% 2%; height: 430px;">
            		<div class="form_body">
            			
            		</div>
 
-           		<div class="col s8 offset-s1" style="margin-top: 0.5em;">
-		           <button id="q_save" class="btn waves-effect waves-light" type="submit">
+           		<div style="margin-top: 0.5em;">
+		           <button class="btn waves-effect waves-light btn-large col s3 offset-s1" id="q_save" class="btn waves-effect waves-light" type="submit" style="width: 100%;">
 		                  Submit
 		                  <!-- <i class="material-icons right">send</i> -->
 		          </button>
+              <div>
+                <button class="btn waves-effect waves-light btn-large col s3 offset-s1" onclick="window.location.reload()" style="width: 100%;"> Finish</button>
+              </div>
 		      </div>
            </div>
 @endsection

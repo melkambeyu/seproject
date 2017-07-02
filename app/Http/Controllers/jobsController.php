@@ -36,10 +36,8 @@ class jobsController extends Controller
      */
     public function store(Request $request)
     {
-    
         return  Auth::guard('company')->user()->jobs()->create($request->all());
          
-                
     }
 
     /**

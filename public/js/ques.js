@@ -44,11 +44,19 @@ $('.que_edit').click(function(e){
 $('body #question_edit_form').submit(function(e){
 	e.preventDefault();
 	var $this = $(this);
+	$this.find('.loader').html('').append(`
+	  <div class="progress animated slidInUp" >
+	      <div class="indeterminate" style="margin-top:15px;"></div>
+	  </div>
+	`);
 	console.log($this.attr('action'));
 	$.ajax({
 		url: $this.attr('action'),
 		method: 'PATCH',
 		data: $this.serialize(),
+		complete: function(){
+			$('.progress').remove();
+		},
 		success: function(data){
 			console.log(data);
 			$('#edit_modal').modal('close');
