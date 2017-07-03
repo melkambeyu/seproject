@@ -9,35 +9,38 @@
 	<div class="col s8 que">
 	<span style="margin-right: 15px; font-size: 1.5em;">{{$q}}.</span>	<span style="font-size: 1.5em;">{{ $question->question}}</span>
 	</div>
-	<form id="exam_form" action="POST">
+	<form id="exam_form" action="/applicant/{{$exam->id}}/mark" method="POST">
 		{{ csrf_field()}}
+		<input type="hidden" name="question_id" value="{{$question->id}}">
 		<div class="input-field col s8 offset-s1 choice">
-			<input type="radio" value="0" name="answer" id="a">
+			<input type="radio" value="0" name="answer[]" id="a">
 			<label for="a">{{ $question->choices[0] }}</label>
 		</div>
 		<div class="input-field col s8 offset-s1 choice" >
-			<input type="radio" value="1" name="answer" id="b">
+			<input type="radio" value="1" name="answer[]" id="b">
 			<label for="b">{{ $question->choices[1] }}</label>
 		</div>
 		<div class="input-field col s8 offset-s1 choice" >
-			<input type="radio" value="2" name="answer" id="c">
+			<input type="radio" value="2" name="answer[]" id="c">
 			<label for="c">{{ $question->choices[2] }}</label>
 		</div>
 		<div class="input-field col s8 offset-s1 choice">
-			<input type="radio" value="3" name="answer" id="d">
+			<input type="radio" value="3" name="answer[]" id="d">
 			<label for="d">{{ $question->choices[3] }}</label>
 		</div>
+		 @if($questions->hasMorepages())
+		 	<input type="hidden" name="has_next" value="{{$questions->nextPageUrl()}}">
+			<div class="next col s4 offset-s4">
+				<button id="more" type="submit" class="waves-effect waves-light btn" style="width: 100%;">Next</button>
+			</div>
+		 @else
+			<div class="finish col s4 offset-s4">
+				<input type="hidden" name="exam_done" value="true">
+				<button id="more" type="submit" class="waves-effect waves green btn" style="width: 100%;">Finish</button>
+			</div> 
+		 @endif
 	</form>
 
- @if($questions->hasMorepages())
-	<div class="next col s4 offset-s4">
-		<a id="more" type="submit" class="waves-effect waves-light btn" href="{{ $questions->nextPageUrl() }}" style="width: 100%;">Next</a>
-	</div>
- @else
-	<div class="finish col s4 offset-s4">
-		<a id="done" class="waves-effect waves-light btn green" href="{{ $questions->nextPageUrl() }}" style="width: 100%;">Finish</a>
-	</div> 
- @endif
 @endforeach
 </div>
 @endsection

@@ -72,15 +72,12 @@ class applicantController extends Controller
     {
         $page = 'exam';
         if(count($id->questions)){
-       $grade= grade::create([
-                'exam_id'=> $id->id,
-                'applicant_id' => Auth::guard('applicant')->user()->id
-                ]);
             $questions = $id->questions()->paginate(1);
 
             return view('applicant.exam_sheet')->with([
                 'page' => $page,
                 'questions' => $questions,
+                'exam'  => $id
                 ]);
         }
         else{
@@ -88,6 +85,42 @@ class applicantController extends Controller
                 'page' => $page,
                 'exam' => $id
                 ]);
+        }
+    }
+
+    public function mark(exam $exam_id, Request $request)
+    {
+        $grade = grade::where([
+            'exam_id'   =>  $exam_id->id,
+            'applicant_id'  => \Auth::guard('applicant')->user()->id
+        ])->first();
+
+        if($grade){
+            // has started taking the exam and grade row exists so do nothing
+        } else {
+            // is new to the exam
+            $grade = new grade([
+                'exam_id'    => $exam_id->id,
+                'applicant_id'  => \Auth::guard('applicant')->user()->id
+            ]);
+            $grade->save();
+        }
+
+        $question = question::find($request->question_id);
+        $right_answer = $question->right_answer;
+
+        // update the grade's correct value
+        if($right_answer == $request->answer[0]){
+            $grade->correct = $grade->correct + 1;
+            $grade->save();
+        }
+
+        if($request->has_next){
+            // has more exams
+            return redirect($request->has_next); // next question
+        } else if($request->exam_done){
+            // the exam is finished
+            return redirect('applicant/home'); // the exam is over
         }
     }
 
