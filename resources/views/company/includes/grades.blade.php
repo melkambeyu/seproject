@@ -19,7 +19,7 @@
             <td>{{ $exam->job->name }}</td>
 
             <td>{{ $grades->correct}} / {{ $grades->number }}</td>
-            <td><a class="btn notify" href="notify/{{$grades->applicant->id}}/{{$exam->job->id}}">Interview</a></td>
+            <td><button class="btn notify" href="notify/{{$grades->applicant->id}}/{{$exam->job->id}}">Notify</button></td>
           </tr>
           @endforeach
       @endif

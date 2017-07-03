@@ -63,6 +63,26 @@ class applicantController extends Controller
 
             ]);
     }
+
+     public function notificationV()
+    {
+        $page = 'notify';
+        $applys = Auth::guard('applicant')->user()->jobs;
+        $notes = Auth::guard('applicant')->user()->notifications;
+        return view('applicant.notification')->with([
+            'page' => $page,
+            'applys' => $applys,
+            'notes' => $notes
+
+            ]);
+    }
+
+    public function del(notification $id)
+    {
+        
+        $id->delete();
+         return 'Done';
+    }
     /**
      * Store a newly created resource in storage.
      *

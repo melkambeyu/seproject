@@ -153,7 +153,7 @@ $('.notify').click(function(e){
 		method: 'GET',
 		success: function (){
 			Materialize.toast('Applicant Called for Interview!',4000);
-			$(this).addClass('disable');
+			$(this).addClass('disabled');
 		}
 	});
 });

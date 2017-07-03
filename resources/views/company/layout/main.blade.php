@@ -30,7 +30,7 @@
           <div id="applicants" class="section">
               <span>Applicants</span>
           </div>
-          <div id="grades" class="section">
+          <div id="grades" class="tabular section">
               <span>Exam Results</span>
           </div>
       </div>

@@ -27,6 +27,7 @@ Route::group(['prefix' => 'applicant'], function () {
   Route::post('/password/reset', 'ApplicantAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'ApplicantAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'ApplicantAuth\ResetPasswordController@showResetForm');
+Route::get('/delete/{$id}', 'applicantController@del');
   
 });
 

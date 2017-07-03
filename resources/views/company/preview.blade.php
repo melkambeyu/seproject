@@ -99,7 +99,7 @@
 <script src="/js/ques.js"></script>
 
 <script>
-  $('#jobs, #applicants').remove();
+  $('#jobs, #applicants,#grades').remove();
               
   $('#exams').addClass('orange').html('<span><strong>Questions</strong></span>')
 </script>

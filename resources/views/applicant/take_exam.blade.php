@@ -1,6 +1,9 @@
 @extends('applicant.layout.main')
 @section('content')
  	<div class="row exams">
+ 	@if(!count($jobs))
+ 		<h2>No Exams to be taken..</h2>
+ 	@else
  	@foreach($jobs as $job)
 		<div class="card-panel col s5 hoverable" style="margin: 5px 5px; height: 170px;">
 	          <h5 class="truncate">{{ $job->exam->job->name }} </h5>
@@ -11,5 +14,6 @@
         </div>
 
  	@endforeach
+ 	@endif
         </div>
 @endsection

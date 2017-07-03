@@ -5,6 +5,7 @@ Route::get('/exams', 'applicantController@examine');
 Route::get('/applications', 'applicantController@applicate');
 Route::get('/take/{id}', 'applicantController@test');
 Route::post('/{exam_id}/mark', 'applicantController@mark');
+Route::get('/notification','applicantController@notificationV');
 // Route::get('/home', function () {
 //     $users[] = Auth::user();
 //     $users[] = Auth::guard()->user();

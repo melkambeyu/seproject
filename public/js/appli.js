@@ -14,3 +14,16 @@ $('.apply').click(function(e) {
 		}
 	});
 });
+$('.ok').click(function(e) {
+	// e.preventDefault();
+	// $this= $(this);
+	// console.log($this.attr('href'));
+	// $.ajax({
+	// 	url: $this.attr('href'),
+	// 	method: 'GET',
+	// 	success: function() {
+	// 		 Materialize.toast('Notification Erased', 4000);
+	// 		 $this.parents('.horizontal').remove();
+	// 	}
+	// });
+})
