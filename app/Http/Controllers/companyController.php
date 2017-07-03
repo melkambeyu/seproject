@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-
+use App\notification;
 class companyController extends Controller
 {
     /**
@@ -20,6 +20,7 @@ class companyController extends Controller
         foreach($jobs as $job){
             array_push($applicants, $job->applicants()->get());
         }
+
         return view('company.layout.index')->with([
             'jobs' => $jobs,
             'exams' => $exams,
@@ -36,7 +37,14 @@ class companyController extends Controller
     {
         //
     }
-
+    public function notify($app_id, $job_id)
+    {
+        $not = new notification([
+            'applicant_id' => $app_id,
+            'job_id' => $job_id
+            ]);
+        $not->save();
+    }
     /**
      * Store a newly created resource in storage.
      *

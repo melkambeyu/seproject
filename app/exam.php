@@ -20,4 +20,8 @@ class exam extends Model
     {
         return $this->belongsToMany('App\applicant','grades');
     }
+    public function grades()
+    {
+        return $this->hasMany(grade::class);
+    }
 }

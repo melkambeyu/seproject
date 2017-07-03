@@ -143,4 +143,17 @@ $('.tables .hider').click(function(e){
 	$this = $(this);
 	// console.log($this.siblings('table'));
 	$this.siblings('table').toggle();
-})
+});
+
+$('.notify').click(function(e){
+	e.preventDefault();
+	var url = $(this).attr('href');
+	$.ajax({
+		url: url,
+		method: 'GET',
+		success: function (){
+			Materialize.toast('Applicant Called for Interview!',4000);
+			$(this).addClass('disable');
+		}
+	});
+});

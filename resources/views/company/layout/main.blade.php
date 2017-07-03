@@ -30,6 +30,9 @@
           <div id="applicants" class="section">
               <span>Applicants</span>
           </div>
+          <div id="grades" class="section">
+              <span>Exam Results</span>
+          </div>
       </div>
 
     <div class="col s9 nav_holder">

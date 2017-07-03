@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth; 
 use App\job; use App\exam;
-use App\question;
+use App\question; use App\notification;
 use App\applicant; use App\grade;
 class applicantController extends Controller
 {
@@ -19,10 +19,12 @@ class applicantController extends Controller
         $page = 'home';
         $user = Auth::guard('applicant')->user()->id; 
         $jobs = job::all()->take(6);
+        $notes = Auth::guard('applicant')->user()->notifications;
         return view('applicant.home')->with([
             'jobs' => $jobs,
             'page' => $page,
-            'user' => $user
+            'user' => $user,
+            'notes' => $notes
             ]);
     }
 
@@ -40,9 +42,12 @@ class applicantController extends Controller
     {   
         $page = 'exam';
         $jobs = Auth::guard('applicant')->user()->jobs;
+        $notes = Auth::guard('applicant')->user()->notifications;
         return view('applicant.take_exam')->with([
             'page' => $page,
-            'jobs' => $jobs
+            'jobs' => $jobs,
+            'notes' => $notes
+
             ]);
     }
 
@@ -50,9 +55,12 @@ class applicantController extends Controller
     {
         $page = 'apply';
         $applys = Auth::guard('applicant')->user()->jobs;
+        $notes = Auth::guard('applicant')->user()->notifications;
         return view('applicant.applications')->with([
             'page' => $page,
             'applys' => $applys,
+            'notes' => $notes
+
             ]);
     }
     /**
@@ -73,11 +81,13 @@ class applicantController extends Controller
         $page = 'exam';
         if(count($id->questions)){
             $questions = $id->questions()->paginate(1);
-
+$notes = Auth::guard('applicant')->user()->notifications;
             return view('applicant.exam_sheet')->with([
                 'page' => $page,
                 'questions' => $questions,
-                'exam'  => $id
+                'exam'  => $id,
+                'notes' => $notes
+
                 ]);
         }
         else{
@@ -101,7 +111,8 @@ class applicantController extends Controller
             // is new to the exam
             $grade = new grade([
                 'exam_id'    => $exam_id->id,
-                'applicant_id'  => \Auth::guard('applicant')->user()->id
+                'applicant_id'  => \Auth::guard('applicant')->user()->id,
+                'number' => $request->total
             ]);
             $grade->save();
         }

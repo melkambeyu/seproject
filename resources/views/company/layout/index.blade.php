@@ -28,6 +28,10 @@
               <div class="loader col s8"></div>
 		      </div>
            </div>
+           <div class="row grades hidden">
+             @include('company.includes.grades')
+           </div>
+
 @endsection
 @section('script')
 <script src="/js/jquery.js"></script>

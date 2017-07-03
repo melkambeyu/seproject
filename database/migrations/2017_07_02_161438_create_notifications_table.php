@@ -15,6 +15,8 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('applicant_id');
+            $table->integer('job_id');
             $table->timestamps();
         });
     }

@@ -35,6 +35,14 @@ class job extends Model
         }
                 return false;
     }
+     public function grades()
+    {
+        return $this->hasManyThrough('App\exam', 'App\job');
+    }
+    public function notifications()
+    {
+        return $this->hasMany(notification::class);
+    }
 }
 
 

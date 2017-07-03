@@ -4,6 +4,7 @@
 	<title>Applicant Panel</title>
 	<link rel="stylesheet" type="text/css" href="/css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="/css/app_style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 	<div class="navbar-fixed">
@@ -61,7 +62,8 @@
           <ul class="collection with-header">
             <li class="collection-header"><h4>Applicant Panel</h4></li>
             <a href="/applicant/home" class="collection-item @if($page == 'home') active @endif ">Jobs</a>
-            <!-- <a href="#" class="collection-item @if($page == 'notify') active @endif ">Notifications</a> -->
+            <a href="#" class="collection-item @if($page == 'notify') active @endif ">@if(count($notes))
+            <span class="new badge">{{count($notes)}}</span>@endif Notifications</a>
             <a href="/applicant/exams" class="collection-item @if($page == 'exam') active @endif ">Take Exam</a>
             <a href="/applicant/applications" class="collection-item @if($page == 'apply') active @endif ">Applications</a>
           </ul>

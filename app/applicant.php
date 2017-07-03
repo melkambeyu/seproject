@@ -50,4 +50,8 @@ class Applicant extends Authenticatable
     {
         return $this->belongsToMany('App\exam','grades');
     }
+    public function notifications()
+    {
+        return $this->hasMany(notification::class);
+    }
 }

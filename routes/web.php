@@ -59,6 +59,7 @@ Route::group(['prefix' => 'company'], function () {
 
   Route::post('/question/{id}', 'questionsController@store');
   Route::post('/exam/{id}', 'examsController@store');
+  Route::get('/notify/{app_id}/{job_id}', 'companyController@notify');
   // Route::get('/exam/{id}', 'examsController@index');
 
 });

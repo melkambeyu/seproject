@@ -1,6 +1,7 @@
-html,body,  {
+html,body  {
   height: 100%;
-  background-color: rgb(230, 230, 230);
+  /*background-color: rgb(230, 230, 230);*/
+  background-image: url('/img/bg.png');
 }
 .row .col.s3{
 	width: 20% !important;
@@ -82,6 +83,9 @@ nav{
 	border-width: medium;
     border-color: orange;
     border-radius: 2px;
+}
+.card{
+	background-image: url('/img/bg_card.png');
 }
 table{
 	border-style: solid;

@@ -1,6 +1,6 @@
 html body{
-	background-color: rgb(245,245,245);
-
+	/*background-color: rgb(245,245,245);*/
+	background-image: url('/img/bg.png');
 }
 .nav-wrapper {
     margin-left: 50px;
@@ -15,9 +15,16 @@ html body{
 	border-color: rgb(230,230,230);
 	margin: 0.5rem 0 1rem 0;
 }
-.card, .card-panel{
+.card{
 	margin: 1rem 1rem;
 	height: 190px;
+	background-image: url('/img/bg_card.png');
+}
+.card-panel{
+	background-image: url('/img/bg_card.png');
+}
+.exams{
+	/*margin-left: 80px;*/
 }
 .activator:hover{
 	cursor: pointer;

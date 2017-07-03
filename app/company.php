@@ -48,4 +48,5 @@ class Company extends Authenticatable
     {
         return $this->hasManyThrough('App\exam', 'App\job');
     }
+    
 }

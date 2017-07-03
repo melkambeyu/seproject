@@ -12,6 +12,7 @@
 	<form id="exam_form" action="/applicant/{{$exam->id}}/mark" method="POST">
 		{{ csrf_field()}}
 		<input type="hidden" name="question_id" value="{{$question->id}}">
+		<input type="hidden" name="total" value="{{ $questions->total() }}">
 		<div class="input-field col s8 offset-s1 choice">
 			<input type="radio" value="0" name="answer[]" id="a">
 			<label for="a">{{ $question->choices[0] }}</label>
