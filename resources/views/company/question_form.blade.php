@@ -1,27 +1,27 @@
 <form id="q_form" action="/company/question/{{$exam}}" method="POST">
   {{csrf_field()}}
     <div class="input-field col s12">
-      <input id="que" type="text" name="question" autofocus>  
-      <label for="que">Question</label>
+      <input id="question_nq" type="text" name="question" autofocus>  
+      <label for="question_nq">Question</label>
     </div>
     <div class="input-field col s6">
-      <input id="a" type="text" name="choices[]">
-      <label for="a">Choice A</label>
+      <input id="choices.0_nq" type="text" name="choices[]">
+      <label for="choices.0_nq">Choice A</label>
     </div>
     <div class="input-field col s6">
-      <input id="b" type="text" name="choices[]">
-      <label for="b">Choice B</label>
+      <input id="choices.1_nq" type="text" name="choices[]">
+      <label for="choices.1_nq">Choice B</label>
     </div>
     <div class="input-field col s6">
-      <input id="c" type="text" name="choices[]">
-      <label for="c">Choice C</label>
+      <input id="choices.2_nq" type="text" name="choices[]">
+      <label for="choices.2_nq">Choice C</label>
     </div>
     <div class="input-field col s6">
-      <input id="d" type="text" name="choices[]">
-      <label for="d">Choice D</label>
+      <input id="choices.3_nq" type="text" name="choices[]">
+      <label for="choices.3_nq">Choice D</label>
     </div>
     <div class="input-field col s8">
-        <select name="right_answer">
+        <select id="right_answer_nq" name="right_answer">
           <option value="" disabled selected>Choose The Right Answer</option>
           <option value="0">Option A</option>
           <option value="1">Option B</option>

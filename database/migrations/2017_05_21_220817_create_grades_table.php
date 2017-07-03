@@ -15,10 +15,10 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('quiz_id')->unsigned();
+            $table->integer('exam_id')->unsigned();
             $table->integer('applicant_id')->unsigned();
-            $table->string('correct');
-            $table->string('number');
+            $table->integer('correct')->default(0);
+            $table->integer('number')->default(0);
             $table->timestamps();
         });
     }

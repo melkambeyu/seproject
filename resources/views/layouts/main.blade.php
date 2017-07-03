@@ -55,7 +55,7 @@
             </li>
         </ul>
         
-        <nav class="#004d40 teal darken-4">
+        <nav class="#004d40 teal">
           <div class="nav-wrapper ">
                 <a href="{{ url('/company') }}" class="brand-logo" href="{{ url('/company') }}">
                     <!-- <i class="material-icons prefix">phone</i> -->

@@ -1,3 +1,5 @@
+ $('.parallax').parallax();
+ 
 $('a').click(function(e){
 	e.preventDefault;
 });

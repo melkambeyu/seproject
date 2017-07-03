@@ -49,3 +49,9 @@
 #company_login_modal, #applicant_login_modal {
   width: 45% !important;
 }
+.parallax-container {
+      height: 500px !important;
+    }
+.section.white{
+  height:;
+}

@@ -37,6 +37,12 @@ class questionsController extends Controller
      */
     public function store(Request $request, $id)
     {
+         $this->validate($request, [
+            'question' => 'required|max:255',
+            'choices'   => 'required|array|size:4',
+            'choices.*' => 'filled|required',
+            'right_answer' => 'required',
+        ]);
         $exam = exam::find($id);
         return $exam->questions()->create($request->all());
     }
@@ -74,6 +80,13 @@ class questionsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'question' => 'required|max:255',
+            'choices'   => 'required|array|size:4',
+            'choices.*' => 'filled|required',
+            'right_answer' => 'required',
+        ]);
+
         $data = [
             'question'  => $request->question,
             'choices'   => $request->choices,
@@ -89,10 +102,9 @@ class questionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(question $id)
     {
-
-        return "helleo";
-        // $q = question::find($id);
+         $id->delete();
+         return 'Done';
     }
 }

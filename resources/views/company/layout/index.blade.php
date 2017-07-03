@@ -25,6 +25,7 @@
               <div>
                 <button class="btn waves-effect waves-light btn-large col s3 offset-s1" onclick="window.location.reload()" style="width: 100%;"> Finish</button>
               </div>
+              <div class="loader col s8"></div>
 		      </div>
            </div>
 @endsection

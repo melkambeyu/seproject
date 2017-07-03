@@ -4,6 +4,10 @@ $('body #job_save').click(function(e) {
 		url = form.attr('action'),
 		method = 'POST';
 
+//remove error messages
+	form.find('.red-text').remove();
+	form.find('input').removeClass('invalid');
+	form.find('textarea').removeClass('invalid');
 	form.find('.loader').html('').append(`
 	  <div class="progress animated slidInUp" >
 	      <div class="indeterminate" style="margin-top:15px;"></div>
@@ -23,6 +27,17 @@ $('body #job_save').click(function(e) {
 			$('#job_modal').modal('close');
 			console.log(data);
 		window.location.reload();
+		},
+		error: function(xhr){
+			var errors = xhr.responseJSON;
+			if ($.isEmptyObject(errors) == false) {
+				
+			    $.each(errors, function(key, value) {
+			        $('#' + key+'_nj')
+			            .addClass('invalid')
+			            .after('<span class="red-text"><strong>' +value + '</strong></span>')
+			    });
+			}
 		}
 	});
 
@@ -44,6 +59,9 @@ $('#exam_modal form').submit(function(e) {
 	e.preventDefault();
 	var form = $(this);
 	console.log(form.attr('action'));
+
+	form.find('.red-text').remove();
+	form.find('input').removeClass('invalid');
 	form.find('.loader').html('').append(`
 	  <div class="progress animated slidInUp" >
 	      <div class="indeterminate" style="margin-top:15px;"></div>
@@ -63,6 +81,17 @@ $('#exam_modal form').submit(function(e) {
 			$('.new_question').removeClass('hidden')
 							.children('.form_body').html(data);	
 			$('select').material_select();
+		},
+		error: function(xhr) {
+			var errors = xhr.responseJSON;
+			if ($.isEmptyObject(errors) == false) {
+				
+			    $.each(errors, function(key, value) {
+			        $('#' +'exa_'+key)
+			            .addClass('invalid')
+			            .after('<span class="red-text"><strong>' +value + '</strong></span>')
+			    });
+			}	
 		}
 	});
 });
@@ -72,15 +101,39 @@ $('#q_save').click(function(e) {
 	var form = $('#q_form'),
 		url = form.attr('action'),
 		method = 'POST';
+
+	form.find('.red-text').remove();
+	form.find('input').removeClass('invalid');
+	$(this).siblings('.loader').html('').append(`
+	  <div class="progress animated slidInUp" >
+	      <div class="indeterminate" style="margin-top:15px;"></div>
+	  </div>
+	`);
+	
 	console.log(form.attr('action'));
 	$.ajax({
 		url: url,
 		method: 'POST',
 		data: form.serialize(),
+		complete: function(){
+			$('.loader .progress').remove();
+		},
 		success: function() {
 			Materialize.toast('Question has been Added!',3000,'orange');
 			form.trigger('reset');
+		},
+		error: function(xhr) {
+			var errors = xhr.responseJSON;
+			if ($.isEmptyObject(errors) == false) {
+				
+			    $.each(errors, function(key, value) {
+			        $('#'+key+'_nq')
+			            .addClass('invalid')
+			            .after('<span class="red-text"><strong>' +value + '</strong></span>')
+			    });
+			}	
 		}
+
 
 	});
 });

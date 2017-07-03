@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
 use Illuminate\Http\Request;
 use App\company;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +23,20 @@ class jobsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function register(Request $request)
+    // {
+    //     $this->validator($request->all())->validate();
+
+    //     event(new Registered($user = $this->create($request->all())));
+
+    //     $this->guard()->login($user);
+
+    //     return $this->registered($request, $user)
+    //         ?: redirect($this->redirectPath());
+    // }
+
+
+
     public function create()
     {
         //
@@ -36,6 +50,13 @@ class jobsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'vacant' => 'required|numeric',
+            'salary' => 'required|numeric',
+            'description' => 'required|min:5',
+        ]);
+
         return  Auth::guard('company')->user()->jobs()->create($request->all());
          
     }

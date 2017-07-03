@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('salary');
             $table->text('description');
             $table->timestamps();
+           
         });
     }
 

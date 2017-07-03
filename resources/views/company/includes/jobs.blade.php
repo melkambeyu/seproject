@@ -1,5 +1,5 @@
 @if( !count($jobs))
-  <h2 style="font-style: italic; margin: 5% 5%;">No Vancant Jobs!!</h2>
+  <h2 style="font-style: italic; margin: 5% 5%;">No Vacant Jobs!!</h2>
 @else
   @foreach($jobs as $job)
  <div class="col s6">
@@ -30,25 +30,37 @@
 </div>
 <div id="job_modal" class="modal animated zoomIn">
     <div class="modal-content">
+    <div class="row">
       <form id="job_form" action="{{ route('jobs.store') }}" method="POST">
         {{ csrf_field() }}
-        <div class="input-field ">
-          <input id="job" type="text" name="name" autofocus>
-          <label for="job">Job Title</label>
+        <div class="input-field s5">
+          <input id="name_nj" type="text" name="name" autofocus>
+          <label for="name_nj">Job Title</label>
+        </div>
+      
+      <div class="input-field s5">
+          <input id="vacant_nj" type="number" name="vacant" autofocus>
+          <label for="vacant_nj">Vacant Space</label>
+        </div>
+       
+      <div class="input-field s5">
+          <input id="salary_nj" type="number" name="salary" autofocus>
+          <label for="salary_nj">Salary</label>
         </div>
 
-        <div class="input-field ">
-          <textarea id="description" name="description" class="materialize-textarea"></textarea>
-          <label for="description">Job Description</label>
+        <div class="input-field s8">
+          <textarea id="description_nj" name="description" class="materialize-textarea"></textarea>
+          <label for="description_nj">Job Description</label>
         </div>
-        <div class="" style="margin-top: 1.8em;">
-                 <button style="width: 100%;" id="job_save" class="btn waves-effect waves-light" type="submit">
+        <div class="col s8 offset-s3" style="margin-top: 0.5em;">
+                 <button style="width: 70%;" id="job_save" class="btn waves-effect waves-light" type="submit">
                         Submit
                         <!-- <i class="material-icons right">send</i> -->
                 </button>
         <div class="loader"></div>
           </div>
-      </form>
+      </form> 
+      </div>
     </div>
 </div>
 
@@ -64,7 +76,7 @@
             <input id="exa_title" type="text" name="title" autofocus>
             <label for="exa_title">Exam Title</label>
         </div>
-        <div class="input-field col s6 offset-s1">
+        <div class="input-field col s6 offset-s1" style="margin-top: 1.5em;">
           <input class="btn waves-effect waves-light" type="submit" value="Create Exam">
         </div>
       </form>

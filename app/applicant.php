@@ -46,4 +46,8 @@ class Applicant extends Authenticatable
     {
         return $this->belongsToMany('App\job', 'applications');
     }
+    public function grades()
+    {
+        return $this->belongsToMany('App\exam','grades');
+    }
 }

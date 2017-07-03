@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->string('choices');
             $table->string('right_answer');
             $table->timestamps();
+
         });
     }
 

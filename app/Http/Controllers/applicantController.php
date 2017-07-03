@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth; 
 use App\job; use App\exam;
-use App\applicant; 
+use App\question;
+use App\applicant; use App\grade;
 class applicantController extends Controller
 {
     /**
@@ -65,6 +66,29 @@ class applicantController extends Controller
     {
         $seeker = Auth::guard('applicant')->user();
          return $id->applicants()->attach($seeker);
+    }
+
+    public function test(exam $id)
+    {
+        $page = 'exam';
+        if(count($id->questions)){
+       $grade= grade::create([
+                'exam_id'=> $id->id,
+                'applicant_id' => Auth::guard('applicant')->user()->id
+                ]);
+            $questions = $id->questions()->paginate(1);
+
+            return view('applicant.exam_sheet')->with([
+                'page' => $page,
+                'questions' => $questions,
+                ]);
+        }
+        else{
+            return view('applicant.exam_sheet')->with([
+                'page' => $page,
+                'exam' => $id
+                ]);
+        }
     }
 
     public function store(Request $request)

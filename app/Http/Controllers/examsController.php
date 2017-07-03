@@ -36,6 +36,10 @@ class examsController extends Controller
      */
     public function store(Request $request, $id)
     {   
+         $this->validate($request, [
+            'title' => 'required|min:5',
+            
+        ]);
        
        $xam = job::find($id)->exam()->create(
         [

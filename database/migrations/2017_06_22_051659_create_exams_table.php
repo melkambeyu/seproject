@@ -18,6 +18,7 @@ class CreateExamsTable extends Migration
             $table->integer('job_id')->unsigned();
             $table->string('title');
             $table->timestamps();
+
         });
     }
 

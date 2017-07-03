@@ -16,4 +16,8 @@ class exam extends Model
     {
     	return $this->hasMany(question::class);
     }
+    public function applicants()
+    {
+        return $this->belongsToMany('App\applicant','grades');
+    }
 }
