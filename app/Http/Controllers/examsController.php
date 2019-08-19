@@ -35,15 +35,15 @@ class examsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
-    {   
+    {
          $this->validate($request, [
             'title' => 'required|min:5',
-            
+
         ]);
-       
+
        $xam = job::find($id)->exam()->create(
         [
-        'title' => $request->title 
+        'title' => $request->title
         ]);
        $exam = $xam->id;
        return view('company.question_form',compact('exam'));
